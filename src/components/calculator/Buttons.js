@@ -20,6 +20,10 @@ const Buttons = ({ result, setResult, value, setValue }) => {
     setValue("");
   };
 
+  const del = () => {
+    setValue(value.substring(0, value.length - 1));
+  };
+
   return (
     <>
       <HStack>
@@ -35,17 +39,11 @@ const Buttons = ({ result, setResult, value, setValue }) => {
         >
           <Text style={styles.text}>2</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => handleOnPressOperator("-")}
-          style={styles.buttonOperator}
-        >
-          <Text style={styles.textOperator}>-</Text>
+        <TouchableOpacity onPress={clear} style={styles.buttonOperator}>
+          <Text style={styles.text}>C</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => handleOnPressOperator("+")}
-          style={styles.buttonOperator}
-        >
-          <Text style={styles.textOperator}>+</Text>
+        <TouchableOpacity onPress={del} style={styles.buttonOperator}>
+          <Text style={styles.text}>Del</Text>
         </TouchableOpacity>
       </HStack>
       <HStack>
@@ -87,8 +85,11 @@ const Buttons = ({ result, setResult, value, setValue }) => {
         >
           <Text style={styles.text}>6</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={clear} style={styles.buttonOperator}>
-          <Text style={styles.textOperator}>C</Text>
+        <TouchableOpacity
+          onPress={() => handleOnPressValue("%")}
+          style={styles.buttonOperator}
+        >
+          <Text style={styles.textOperator}>%</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={calculation} style={styles.buttonOperator}>
           <Text style={styles.text}>=</Text>
@@ -107,6 +108,20 @@ const Buttons = ({ result, setResult, value, setValue }) => {
         >
           <Text style={styles.text}>8</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handleOnPressOperator("-")}
+          style={styles.buttonOperator}
+        >
+          <Text style={styles.textOperator}>-</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handleOnPressOperator("+")}
+          style={styles.buttonOperator}
+        >
+          <Text style={styles.textOperator}>+</Text>
+        </TouchableOpacity>
+      </HStack>
+      <HStack>
         <TouchableOpacity
           onPress={() => handleOnPressValue("9")}
           style={styles.button}
